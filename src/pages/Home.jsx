@@ -9,7 +9,7 @@ import { Footer } from "../components/Footer";
 
 export const Home = () => {
     return (
-      <div className="min-h-screen bg-min-bg text-min-foreground overflow-x-hidden relative selection:bg-min-accent/30 selection:text-white">
+      <div className="min-h-screen bg-[#E0E5EC] text-foreground overflow-x-hidden relative selection:bg-accent/20 selection:text-accent font-body transition-colors duration-300">
        <AmbientOrbs />
 
         <Navbar />

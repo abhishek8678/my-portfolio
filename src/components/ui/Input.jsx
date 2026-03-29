@@ -11,7 +11,7 @@ const Input = React.forwardRef(({ className, type, ...props }, ref) => {
     <input
       type={type}
       className={cn(
-        "flex w-full h-11 rounded-lg border border-white/10 bg-[#1A1A24]/60 backdrop-blur-md px-4 py-2 text-min-foreground text-base transition-all duration-200 placeholder:text-min-muted-foreground focus:outline-none focus:border-min-accent/50 focus:ring-2 focus:ring-min-accent/20 focus:shadow-glow-sm",
+        "flex w-full h-12 rounded-2xl bg-[#E0E5EC] shadow-neu-inset px-4 py-2 text-foreground text-base transition-all duration-300 placeholder:text-muted/60 focus:outline-none focus:shadow-neu-inset-deep focus:ring-2 focus:ring-accent/20",
         className
       )}
       ref={ref}
@@ -25,7 +25,7 @@ const Textarea = React.forwardRef(({ className, ...props }, ref) => {
   return (
     <textarea
       className={cn(
-        "flex w-full min-h-[120px] rounded-lg border border-white/10 bg-[#1A1A24]/60 backdrop-blur-md px-4 py-3 text-min-foreground text-base transition-all duration-200 placeholder:text-min-muted-foreground focus:outline-none focus:border-min-accent/50 focus:ring-2 focus:ring-min-accent/20 focus:shadow-glow-sm resize-y",
+        "flex w-full min-h-[120px] rounded-2xl bg-[#E0E5EC] shadow-neu-inset px-4 py-3 text-foreground text-base transition-all duration-300 placeholder:text-muted/60 focus:outline-none focus:shadow-neu-inset-deep focus:ring-2 focus:ring-accent/20 resize-y",
         className
       )}
       ref={ref}

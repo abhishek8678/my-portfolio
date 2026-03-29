@@ -1,62 +1,35 @@
 @import "tailwindcss";
 
 @theme {
-  --color-min-bg: #0A0A0F;
-  --color-min-bg-alt: #12121A;
-  --color-min-foreground: #FAFAFA;
-  --color-min-muted: #1A1A24;
-  --color-min-muted-foreground: #71717A;
+  --color-page: #E0E5EC;
+  --color-foreground: #3D4852;
+  --color-muted: #6B7280;
+  --color-accent: #6C63FF;
+  --color-accent-light: #8B84FF;
+  --color-accent-success: #38B2AC;
+
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+
+  --shadow-neu-extruded: 9px 9px 16px rgb(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+  --shadow-neu-extruded-hover: 12px 12px 20px rgb(163, 177, 198, 0.7), -12px -12px 20px rgba(255, 255, 255, 0.6);
+  --shadow-neu-extruded-sm: 5px 5px 10px rgb(163, 177, 198, 0.6), -5px -5px 10px rgba(255, 255, 255, 0.5);
   
-  --color-min-accent: #F59E0B;
-  --color-min-accent-foreground: #0A0A0F;
-  --color-min-accent-muted: rgba(245, 158, 11, 0.15);
-  
-  --color-min-border: rgba(255, 255, 255, 0.08);
-  --color-min-border-hover: rgba(255, 255, 255, 0.15);
-  --color-min-card: rgba(26, 26, 36, 0.6);
-  --color-min-card-solid: #1A1A24;
-
-  --color-background: #0A0A0F;
-  --color-foreground: #FAFAFA;
-  --color-border: rgba(255, 255, 255, 0.08);
-
-  --font-space: "Space Grotesk", system-ui, sans-serif;
-  --font-inter: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
-
-  --shadow-glow-sm: 0 0 20px rgba(245, 158, 11, 0.15);
-  --shadow-glow-md: 0 0 40px rgba(245, 158, 11, 0.2);
-  --shadow-glow-lg: 0 0 60px rgba(245, 158, 11, 0.25);
-  --shadow-border-glow: 0 0 0 1px rgba(245, 158, 11, 0.3), 0 0 20px rgba(245, 158, 11, 0.15);
+  --shadow-neu-inset: inset 6px 6px 10px rgb(163, 177, 198, 0.6), inset -6px -6px 10px rgba(255, 255, 255, 0.5);
+  --shadow-neu-inset-deep: inset 10px 10px 20px rgb(163, 177, 198, 0.7), inset -10px -10px 20px rgba(255, 255, 255, 0.6);
+  --shadow-neu-inset-sm: inset 3px 3px 6px rgb(163, 177, 198, 0.6), inset -3px -3px 6px rgba(255, 255, 255, 0.5);
 }
 
 @layer base {
-  :root {
-    --background: var(--color-min-bg);
-    --foreground: var(--color-min-foreground);
-    --border: var(--color-min-border);
-  }
-
-  body::before {
-    content: "";
-    @apply fixed inset-0 pointer-events-none -z-50;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02' /%3E%3C/svg%3E");
-    opacity: 0.02;
-  }
-
   body {
-    @apply bg-min-bg text-min-foreground font-inter transition-colors duration-300;
+    @apply bg-[#E0E5EC] text-foreground font-body transition-colors duration-300;
     -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-space font-medium tracking-tight;
+    @apply font-display font-bold tracking-tight text-foreground;
   }
-  
-  * {
-    @apply border-min-border;
-  }
-  
+
   html {
      @apply scroll-smooth;
   }
@@ -68,6 +41,49 @@
   @media (width >= 768px) { padding-inline: 2rem; max-width: 768px; }
   @media (width >= 1024px) { padding-inline: 3rem; max-width: 1024px; }
   @media (width >= 1280px) { max-width: 1152px; }
+}
+
+@layer utilities {
+  .shadow-neu-extruded {
+    box-shadow: var(--shadow-neu-extruded);
+  }
+  .shadow-neu-extruded-hover {
+    box-shadow: var(--shadow-neu-extruded-hover);
+  }
+  .shadow-neu-extruded-sm {
+    box-shadow: var(--shadow-neu-extruded-sm);
+  }
+  .shadow-neu-inset {
+    box-shadow: var(--shadow-neu-inset);
+  }
+  .shadow-neu-inset-deep {
+    box-shadow: var(--shadow-neu-inset-deep);
+  }
+  .shadow-neu-inset-sm {
+    box-shadow: var(--shadow-neu-inset-sm);
+  }
+
+  .text-shadow-neumorphic {
+    text-shadow: 2px 2px 4px rgba(163, 177, 198, 0.5), -2px -2px 4px rgba(255, 255, 255, 0.8);
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+@keyframes float-nested {
+  0% { transform: scale(1.05) rotate(180deg) translateY(0px); }
+  50% { transform: scale(1.05) rotate(180deg) translateY(-8px); }
+  100% { transform: scale(1.05) rotate(180deg) translateY(0px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+.animate-float-nested {
+  animation: float-nested 4s ease-in-out infinite;
 }
 
 #root {

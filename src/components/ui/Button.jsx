@@ -7,25 +7,25 @@ export function cn(...inputs) {
 }
 
 const Button = React.forwardRef(({ className, variant = "primary", size = "default", children, ...props }, ref) => {
-  const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-min-accent focus-visible:ring-offset-2 focus-visible:ring-offset-min-bg disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] rounded-lg"
+  const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[#E0E5EC] disabled:opacity-50 disabled:pointer-events-none rounded-2xl"
   
   const variants = {
-    primary: "bg-min-accent text-min-accent-foreground hover:brightness-110 hover:shadow-glow-sm",
-    secondary: "bg-transparent text-min-foreground border border-white/15 hover:bg-white/5 hover:border-white/25",
-    ghost: "bg-transparent text-min-foreground border-transparent hover:bg-white/5",
+    primary: "bg-accent text-white shadow-neu-extruded hover:-translate-y-[1px] hover:shadow-neu-extruded-hover active:translate-y-[0.5px] active:shadow-neu-inset-sm",
+    secondary: "bg-[#E0E5EC] text-foreground shadow-neu-extruded hover:-translate-y-[1px] hover:shadow-neu-extruded-hover active:translate-y-[0.5px] active:shadow-neu-inset",
+    ghost: "bg-transparent text-muted hover:text-foreground hover:shadow-neu-extruded active:shadow-neu-inset",
   }
 
   const sizes = {
-    sm: "h-9 px-4 text-sm",
-    default: "h-11 px-6 text-base",
-    lg: "h-12 px-8 text-lg",
-    icon: "h-11 w-11",
+    sm: "h-9 px-4 text-sm rounded-xl",
+    default: "h-12 px-6 text-base",
+    lg: "h-14 px-8 text-lg",
+    icon: "h-12 w-12 rounded-xl",
   }
 
   return (
     <button
       ref={ref}
-      className={cn(baseStyles, variants[variant], sizes[size], className)}
+      className={cn(baseStyles, variants[variant] || variants.primary, sizes[size] || sizes.default, className)}
       {...props}
     >
       {children}

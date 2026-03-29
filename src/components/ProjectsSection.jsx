@@ -34,68 +34,70 @@ const projects = [
 
 export const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-24 md:py-32 lg:py-40 px-6 relative z-10">
+    <section id="projects" className="py-24 md:py-32 lg:py-40 px-6 relative z-10 transition-colors duration-300">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-4xl md:text-5xl font-space font-semibold mb-6 text-min-foreground">
-          Featured <span className="text-min-accent">Projects</span>
+        <h2 className="text-4xl md:text-5xl font-display font-extrabold mb-6 text-foreground text-shadow-neumorphic text-center">
+          Featured <span className="text-accent underline decoration-accent/20 underline-offset-8">Projects</span>
         </h2>
 
-        <p className="text-min-muted-foreground mb-16 max-w-2xl text-base font-light leading-relaxed">
+        <p className="text-muted mb-16 max-w-2xl text-lg font-body leading-relaxed font-normal mx-auto text-center">
           Here are some of my recent projects. Each project was carefully
           crafted with attention to detail, performance, and user experience.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((project, key) => (
-            <Card key={key} hover={true} className="p-0 flex flex-col group overflow-hidden">
-              <div className="h-48 overflow-hidden relative border-b border-white/5">
+            <Card key={key} hover={true} className="p-0 flex flex-col group overflow-hidden shadow-neu-extruded hover:scale-[1.03] transition-all duration-500">
+              <div className="h-56 overflow-hidden relative m-4 rounded-[24px] shadow-neu-inset-sm p-1 bg-[#E0E5EC]">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                  className="w-full h-full object-cover rounded-[20px] transition-transform duration-700 ease-out group-hover:scale-110 grayscale group-hover:grayscale-0 opacity-90 group-hover:opacity-100"
                 />
               </div>
 
-              <div className="p-6 flex flex-col grow">
-                <div className="flex flex-wrap gap-2 mb-4">
+              <div className="p-8 flex flex-col grow">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag, idx) => (
-                    <span key={idx} className="px-2 py-1 text-[11px] font-mono tracking-wide rounded bg-white/5 border border-white/10 text-min-muted-foreground group-hover:text-min-foreground transition-colors">
+                    <span key={idx} className="px-3 py-1 text-xs font-display font-black tracking-widest rounded-full bg-[#E0E5EC] shadow-neu-inset text-accent">
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <h3 className="text-xl font-space font-medium mb-3 text-min-foreground">{project.title}</h3>
-                <p className="text-min-muted-foreground text-sm font-light leading-relaxed mb-6 grow">
+                <h3 className="text-2xl font-display font-bold mb-3 text-foreground">{project.title}</h3>
+                <p className="text-muted text-base font-body leading-relaxed mb-8 grow font-normal">
                   {project.description}
                 </p>
 
-                <div className="flex justify-end items-center mt-auto pt-4 border-t border-white/5 gap-4">
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      className="text-min-muted-foreground hover:text-min-accent transition-colors"
-                      aria-label="GitHub Repository"
-                    >
-                      <Github size={18} strokeWidth={1.5} />
-                    </a>
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      className="text-min-muted-foreground hover:text-min-accent transition-colors"
-                      aria-label="Live Demo"
-                    >
-                      <ExternalLink size={18} strokeWidth={1.5} />
-                    </a>
+                <div className="flex justify-between items-center mt-auto pt-6 border-t border-accent/10 gap-4">
+                    <div className="flex gap-4">
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        className="p-3 bg-[#E0E5EC] rounded-xl shadow-neu-extruded-sm text-muted hover:text-accent active:shadow-neu-inset-sm transition-all duration-300"
+                        aria-label="GitHub Repository"
+                      >
+                        <Github size={20} strokeWidth={2} />
+                      </a>
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        className="p-3 bg-[#E0E5EC] rounded-xl shadow-neu-extruded-sm text-muted hover:text-accent active:shadow-neu-inset-sm transition-all duration-300"
+                        aria-label="Live Demo"
+                      >
+                        <ExternalLink size={20} strokeWidth={2} />
+                      </a>
+                    </div>
                 </div>
               </div>
             </Card>
           ))}
         </div>
 
-        <div className="mt-16 flex justify-center">
-          <Button onClick={() => window.open('https://github.com/abhishek8678', '_blank')} variant="ghost" className="group text-min-accent hover:text-min-accent hover:bg-min-accent/10">
-            View all on GitHub <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+        <div className="mt-20 flex justify-center">
+          <Button onClick={() => window.open('https://github.com/abhishek8678', '_blank')} className="group text-lg h-14 px-10">
+            View all on GitHub <ArrowRight size={20} className="ml-3 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>

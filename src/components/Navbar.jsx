@@ -28,18 +28,22 @@ export const Navbar = () => {
     <div className="fixed w-full z-50 top-0 pt-4 px-4 sm:px-6 pointer-events-none">
       <nav
         className={cn(
-          "mx-auto max-w-6xl transition-all duration-300 pointer-events-auto rounded-xl px-6",
+          "mx-auto max-w-6xl transition-all duration-300 pointer-events-auto rounded-[32px] px-6",
           isScrolled 
-            ? "py-3 bg-[#1A1A24]/60 backdrop-blur-md border border-white/10 shadow-glow-sm" 
-            : "py-5 bg-transparent border-transparent"
+            ? "py-3 bg-[#E0E5EC] shadow-neu-extruded" 
+            : "py-5 bg-transparent shadow-none"
         )}
       >
         <div className="flex items-center justify-between">
           <a
-            className="text-xl font-medium tracking-tight text-min-foreground flex items-center hover:opacity-80 transition-opacity font-space"
+            className="flex items-center group"
             href="#hero"
           >
-            Abhishek<span className="text-min-accent">.</span>
+            <div className="px-4 py-2 rounded-2xl bg-[#E0E5EC] shadow-neu-inset-sm hover:shadow-neu-inset transition-all duration-300">
+              <span className="text-xl font-display font-black tracking-tight text-foreground whitespace-nowrap">
+                Abhishek Kumar
+              </span>
+            </div>
           </a>
 
           {/* desktop nav */}
@@ -48,7 +52,7 @@ export const Navbar = () => {
               <a
                 key={key}
                 href={item.href}
-                className="px-4 py-2 text-sm font-medium text-min-muted-foreground hover:text-min-foreground transition-colors duration-200"
+                className="px-4 py-2 text-sm font-medium text-muted hover:text-foreground transition-colors duration-200"
               >
                 {item.name}
               </a>
@@ -62,7 +66,7 @@ export const Navbar = () => {
           {/* mobile nav toggle */}
           <button
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            className="md:hidden p-2 text-min-foreground hover:text-min-accent transition-colors z-50"
+            className="md:hidden p-2 text-foreground hover:text-accent transition-colors z-50 rounded-xl shadow-neu-extruded-sm active:shadow-neu-inset bg-[#E0E5EC]"
             aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
           >
             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -72,7 +76,7 @@ export const Navbar = () => {
         {/* Mobile menu overlay */}
         <div
           className={cn(
-            "absolute top-full left-0 right-0 mt-4 bg-[#1A1A24]/95 backdrop-blur-xl border border-white/10 rounded-xl p-6 z-40 flex flex-col items-center justify-center transition-all duration-300 ease-out md:hidden shadow-xl",
+            "absolute top-full left-0 right-0 mt-4 bg-[#E0E5EC] rounded-[32px] p-6 z-40 flex flex-col items-center justify-center transition-all duration-300 ease-out md:hidden shadow-neu-extruded",
             isMenuOpen
               ? "opacity-100 translate-y-0"
               : "opacity-0 -translate-y-4 pointer-events-none"
@@ -83,7 +87,7 @@ export const Navbar = () => {
               <a
                 key={key}
                 href={item.href}
-                className="text-base font-medium text-min-foreground p-3 hover:text-min-accent transition-colors duration-200"
+                className="text-base font-medium text-foreground p-3 hover:text-accent font-display transition-colors duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
