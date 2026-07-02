@@ -1,25 +1,21 @@
 import * as React from "react"
-import { clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
-
-export function cn(...inputs) {
-  return twMerge(clsx(inputs))
-}
+import { cn } from "@/lib/utils"
 
 const Button = React.forwardRef(({ className, variant = "primary", size = "default", children, ...props }, ref) => {
-  const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[#E0E5EC] disabled:opacity-50 disabled:pointer-events-none rounded-2xl"
+  const baseStyles = "inline-flex items-center justify-center font-medium font-body tracking-tight transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#89AACC]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
   
   const variants = {
-    primary: "bg-accent text-white shadow-neu-extruded hover:-translate-y-[1px] hover:shadow-neu-extruded-hover active:translate-y-[0.5px] active:shadow-neu-inset-sm",
-    secondary: "bg-[#E0E5EC] text-foreground shadow-neu-extruded hover:-translate-y-[1px] hover:shadow-neu-extruded-hover active:translate-y-[0.5px] active:shadow-neu-inset",
-    ghost: "bg-transparent text-muted hover:text-foreground hover:shadow-neu-extruded active:shadow-neu-inset",
+    primary: "bg-text-primary text-bg rounded-full hover:scale-105 active:scale-[0.98]",
+    secondary: "bg-transparent text-text-primary border-2 border-stroke rounded-full hover:bg-surface hover:border-stroke active:scale-[0.98]",
+    ghost: "bg-transparent text-text-primary rounded-full hover:bg-surface active:scale-[0.98]",
+    outline: "bg-bg text-text-primary border border-stroke rounded-full hover:bg-surface active:scale-[0.98]",
   }
 
   const sizes = {
-    sm: "h-9 px-4 text-sm rounded-xl",
-    default: "h-12 px-6 text-base",
-    lg: "h-14 px-8 text-lg",
-    icon: "h-12 w-12 rounded-xl",
+    sm: "h-9 px-5 text-sm",
+    default: "h-11 px-7 text-sm",
+    lg: "h-12 px-8 text-base",
+    icon: "h-11 w-11",
   }
 
   return (

@@ -1,6 +1,6 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Card } from "./ui/Card";
 
 const skills = [
   { name: "HTML/CSS", level: 80, category: "frontend" },
@@ -22,6 +22,25 @@ const skills = [
 
 const categories = ["all", "frontend", "backend", "tools"];
 
+// Marquee items with distinct font styling (fintech brand marquee aesthetic)
+const skillMarqueeItems = [
+  { name: "React", style: { fontFamily: "Georgia, serif", fontWeight: 700, letterSpacing: "-0.02em", fontSize: "16px" } },
+  { name: "TypeScript", style: { fontFamily: "Arial, sans-serif", fontWeight: 900, letterSpacing: "0.06em", fontSize: "13px", textTransform: "uppercase" } },
+  { name: "Node.js", style: { fontFamily: "'Trebuchet MS', sans-serif", fontWeight: 600, letterSpacing: "0.01em", fontSize: "16px", fontStyle: "italic" } },
+  { name: "PostgreSQL", style: { fontFamily: "'Courier New', monospace", fontWeight: 700, letterSpacing: "0.1em", fontSize: "13px", textTransform: "uppercase" } },
+  { name: "Next.js", style: { fontFamily: "Palatino, serif", fontWeight: 400, letterSpacing: "-0.01em", fontSize: "17px" } },
+  { name: "Docker", style: { fontFamily: "Impact, sans-serif", fontWeight: 400, letterSpacing: "0.04em", fontSize: "15px" } },
+  { name: "GraphQL", style: { fontFamily: "Verdana, sans-serif", fontWeight: 700, letterSpacing: "-0.03em", fontSize: "14px" } },
+  { name: "Tailwind", style: { fontFamily: "Georgia, serif", fontWeight: 600, letterSpacing: "0.02em", fontSize: "15px" } },
+];
+
+const viewAnim = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] },
+  viewport: { once: true, margin: "-100px" },
+};
+
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
 
@@ -30,45 +49,92 @@ export const SkillsSection = () => {
   );
 
   return (
-    <section id="skills" className="py-24 md:py-32 lg:py-40 px-6 relative z-10 transition-colors duration-300">
-      <div className="container mx-auto max-w-6xl">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-            <h2 className="text-4xl md:text-5xl font-display font-extrabold text-foreground text-shadow-neumorphic">
-              My <span className="text-accent underline decoration-accent/20 underline-offset-8">Skills</span>
-            </h2>
-
-            <div className="flex flex-wrap gap-4 p-2 rounded-[20px] shadow-neu-inset-sm bg-[#E0E5EC]">
-              {categories.map((category, key) => (
-                <button
-                  key={key}
-                  onClick={() => setActiveCategory(category)}
-                  className={cn(
-                    "px-6 py-2 rounded-xl text-sm font-display font-bold tracking-wide transition-all duration-300 capitalize",
-                    activeCategory === category
-                      ? "bg-[#E0E5EC] shadow-neu-extruded-sm text-accent"
-                      : "bg-transparent text-muted hover:text-foreground active:shadow-neu-inset-sm"
-                  )}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
+    <section id="skills" className="bg-page px-4 md:px-6 py-24">
+      <div className="max-w-[88rem] mx-auto">
+        {/* Skill marquee */}
+        <div className="overflow-hidden mb-16">
+          <div className="marquee-track-reverse">
+            {[...skillMarqueeItems, ...skillMarqueeItems].map((item, i) => (
+              <span
+                key={i}
+                className="mx-10 shrink-0 text-foreground/15 whitespace-nowrap"
+                style={item.style}
+              >
+                {item.name}
+              </span>
+            ))}
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {filteredSkills.map((skill, key) => (
-            <Card key={key} hover={true} className="p-8 flex flex-col items-start group shadow-neu-extruded hover:scale-[1.05]">
-              <div className="w-full flex justify-between items-center mb-6 text-left">
-                 <h3 className="font-display font-bold text-xl text-foreground">{skill.name}</h3>
-                 <span className="text-accent font-display font-black text-sm">{skill.level}%</span>
+        {/* Header */}
+        <motion.div {...viewAnim} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-12">
+          <div>
+            <p className="text-muted text-sm mb-2">Technical Proficiency</p>
+            <h2
+              className="text-foreground text-5xl md:text-6xl font-medium leading-none mb-6"
+              style={{ letterSpacing: "-0.04em" }}
+            >
+              My Skills
+            </h2>
+          </div>
+          <div className="md:pt-2">
+            <p className="text-muted text-base leading-relaxed max-w-sm">
+              Technologies and tools I work with daily to build robust, scalable applications.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Category tabs */}
+        <div className="flex flex-wrap gap-2 mb-10">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={cn(
+                "rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-200 capitalize cursor-pointer",
+                activeCategory === category
+                  ? "bg-foreground text-white shadow-pill"
+                  : "text-muted hover:text-foreground bg-card border border-border hover:border-border-hover"
+              )}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+        {/* Skills grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {filteredSkills.map((skill, index) => (
+            <motion.div
+              key={skill.name}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.4,
+                ease: [0.25, 0.1, 0.25, 1],
+                delay: index * 0.04,
+              }}
+              viewport={{ once: true, margin: "-50px" }}
+              className="bg-card border border-border rounded-2xl p-5 group hover:shadow-card-hover hover:border-border-hover transition-all duration-300"
+            >
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-sm font-medium text-foreground">
+                  {skill.name}
+                </h3>
+                <span
+                  className="text-xs text-muted font-medium"
+                  style={{ fontVariantNumeric: "tabular-nums" }}
+                >
+                  {skill.level}%
+                </span>
               </div>
-              <div className="w-full h-3 bg-[#E0E5EC] shadow-neu-inset-sm rounded-full overflow-hidden mt-auto p-[2px]">
-                 <div 
-                   className="h-full bg-accent rounded-full transition-all duration-1000 ease-out shadow-[0_0_8px_rgba(108,99,255,0.4)]" 
-                   style={{ width: `${skill.level}%` }} 
-                 />
+              <div className="h-1.5 bg-page rounded-full overflow-hidden">
+                <div
+                  className="h-full rounded-full bg-foreground transition-all duration-1000"
+                  style={{ width: `${skill.level}%` }}
+                />
               </div>
-            </Card>
+            </motion.div>
           ))}
         </div>
       </div>

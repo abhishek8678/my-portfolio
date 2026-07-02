@@ -1,94 +1,120 @@
 @import "tailwindcss";
 
+/* ── Design System ── */
 @theme {
-  --color-page: #E0E5EC;
-  --color-foreground: #3D4852;
-  --color-muted: #6B7280;
-  --color-accent: #6C63FF;
-  --color-accent-light: #8B84FF;
-  --color-accent-success: #38B2AC;
+  --color-page: #F5F5F5;
+  --color-card: #FFFFFF;
+  --color-card-dark: #2B2644;
+  --color-foreground: #000000;
+  --color-muted: rgba(0, 0, 0, 0.55);
+  --color-muted-light: rgba(0, 0, 0, 0.35);
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-hover: rgba(0, 0, 0, 0.15);
 
-  --font-display: "Plus Jakarta Sans", sans-serif;
-  --font-body: "DM Sans", sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-  --shadow-neu-extruded: 9px 9px 16px rgb(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
-  --shadow-neu-extruded-hover: 12px 12px 20px rgb(163, 177, 198, 0.7), -12px -12px 20px rgba(255, 255, 255, 0.6);
-  --shadow-neu-extruded-sm: 5px 5px 10px rgb(163, 177, 198, 0.6), -5px -5px 10px rgba(255, 255, 255, 0.5);
-  
-  --shadow-neu-inset: inset 6px 6px 10px rgb(163, 177, 198, 0.6), inset -6px -6px 10px rgba(255, 255, 255, 0.5);
-  --shadow-neu-inset-deep: inset 10px 10px 20px rgb(163, 177, 198, 0.7), inset -10px -10px 20px rgba(255, 255, 255, 0.6);
-  --shadow-neu-inset-sm: inset 3px 3px 6px rgb(163, 177, 198, 0.6), inset -3px -3px 6px rgba(255, 255, 255, 0.5);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 2px 8px rgba(0, 0, 0, 0.06), 0 8px 32px rgba(0, 0, 0, 0.06);
+  --shadow-pill: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 @layer base {
-  body {
-    @apply bg-[#E0E5EC] text-foreground font-body transition-colors duration-300;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-bold tracking-tight text-foreground;
+  *, *::before, *::after {
+    font-family: var(--font-sans);
   }
 
   html {
-     @apply scroll-smooth;
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-page text-foreground font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: rgba(43, 38, 68, 0.15);
+    color: #2B2644;
   }
 }
 
-@utility container {
-  margin-inline: auto;
-  padding-inline: 1.5rem;
-  @media (width >= 768px) { padding-inline: 2rem; max-width: 768px; }
-  @media (width >= 1024px) { padding-inline: 3rem; max-width: 1024px; }
-  @media (width >= 1280px) { max-width: 1152px; }
+/* ── Marquee Animations ── */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-@layer utilities {
-  .shadow-neu-extruded {
-    box-shadow: var(--shadow-neu-extruded);
-  }
-  .shadow-neu-extruded-hover {
-    box-shadow: var(--shadow-neu-extruded-hover);
-  }
-  .shadow-neu-extruded-sm {
-    box-shadow: var(--shadow-neu-extruded-sm);
-  }
-  .shadow-neu-inset {
-    box-shadow: var(--shadow-neu-inset);
-  }
-  .shadow-neu-inset-deep {
-    box-shadow: var(--shadow-neu-inset-deep);
-  }
-  .shadow-neu-inset-sm {
-    box-shadow: var(--shadow-neu-inset-sm);
-  }
-
-  .text-shadow-neumorphic {
-    text-shadow: 2px 2px 4px rgba(163, 177, 198, 0.5), -2px -2px 4px rgba(255, 255, 255, 0.8);
-  }
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
 
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-@keyframes float-nested {
-  0% { transform: scale(1.05) rotate(180deg) translateY(0px); }
-  50% { transform: scale(1.05) rotate(180deg) translateY(-8px); }
-  100% { transform: scale(1.05) rotate(180deg) translateY(0px); }
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-.animate-float-nested {
-  animation: float-nested 4s ease-in-out infinite;
+.marquee-track-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse 30s linear infinite;
 }
 
+.marquee-track:hover,
+.marquee-track-reverse:hover {
+  animation-play-state: paused;
+}
+
+/* ── Fade-in on scroll ── */
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(24px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes role-cycle {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-role-cycle {
+  animation: role-cycle 0.4s ease-out;
+}
+
+/* ── Loading counter ── */
+@keyframes count-glow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* ── Pill button hover glow ── */
+.pill-glow {
+  transition: all 0.2s ease;
+}
+.pill-glow:hover {
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F5F5;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* ── Root ── */
 #root {
   max-width: 100%;
   margin: 0 auto;
   padding: 0;
-  text-align: center;
 }

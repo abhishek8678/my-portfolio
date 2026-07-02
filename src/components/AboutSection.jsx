@@ -1,79 +1,116 @@
-import { Briefcase, Code, User, ArrowRight } from "lucide-react";
-import { Card } from "./ui/Card";
-import { Button } from "./ui/Button";
+import { motion } from "framer-motion";
+import { ArrowRight, Code, User, Briefcase } from "lucide-react";
+
+const specialties = [
+  {
+    icon: Code,
+    title: "Full Stack\nDevelopment",
+    description: "Building scalable end-to-end applications using modern frameworks and distributed systems.",
+    dark: false,
+  },
+  {
+    icon: User,
+    title: "Architectural\nDesign",
+    description: "Designing robust system architectures and intuitive, tactile user interfaces.",
+    dark: true,
+  },
+  {
+    icon: Briefcase,
+    title: "Project\nManagement",
+    description: "Leading projects from conception to completion with agile methodologies.",
+    dark: true,
+  },
+];
+
+const viewAnim = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] },
+  viewport: { once: true, margin: "-100px" },
+};
 
 export const AboutSection = () => {
   return (
-    <section id="about" className="py-24 md:py-32 lg:py-40 px-6 relative z-10 transition-colors duration-300">
-      <div className="container mx-auto max-w-6xl">
-        <h2 className="text-4xl md:text-5xl font-display font-extrabold mb-16 text-foreground text-shadow-neumorphic">
-          About <span className="text-accent underline decoration-accent/20 underline-offset-8">Me</span>
-        </h2>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <Card className="p-8 md:p-12 shadow-neu-extruded" hover={false}>
-            <div className="space-y-8">
-              <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground">
-                Software Engineer & Full Stack Developer
-              </h3>
-
-              <p className="text-muted text-lg leading-relaxed font-body">
-                I am a dedicated full stack software engineer with a deep passion for architecting scalable systems and building intuitive digital products. With a strong foundation in both frontend and backend technologies, I specialize in creating seamless, end-to-end solutions that solve complex real-world challenges.
-              </p>
-
-              <p className="text-muted text-lg leading-relaxed font-body">
-                I thrive at the intersection of architecture and design, constantly pushing the boundaries of modern web technologies to deliver high-performance applications that are as physically satisfying as they are functional.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-6 pt-6">
-                <Button onClick={() => window.location.href='#contact'} className="group h-14 px-8">
-                  Get In Touch
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 duration-200" />
-                </Button>
-                <Button variant="secondary" onClick={() => {}} className="h-14 px-8">
-                  Download CV
-                </Button>
-              </div>
-            </div>
-          </Card>
-
-          <div className="grid grid-cols-1 gap-8">
-            <Card className="flex items-start gap-6 p-8 shadow-neu-extruded transition-transform duration-300 hover:scale-[1.02]" hover={true}>
-              <div className="shrink-0 p-4 rounded-2xl shadow-neu-inset-deep bg-[#E0E5EC]">
-                <Code className="h-6 w-6 text-accent" strokeWidth={2} />
-              </div>
-              <div className="text-left">
-                <h4 className="font-display font-bold text-xl text-foreground mb-2">Full Stack Development</h4>
-                <p className="text-muted text-base font-body leading-relaxed">
-                  Building scalable end-to-end applications using modern frameworks and distributed systems.
-                </p>
-              </div>
-            </Card>
-
-            <Card className="flex items-start gap-6 p-8 shadow-neu-extruded transition-transform duration-300 hover:scale-[1.02]" hover={true}>
-              <div className="shrink-0 p-4 rounded-2xl shadow-neu-inset-deep bg-[#E0E5EC]">
-                <User className="h-6 w-6 text-accent" strokeWidth={2} />
-              </div>
-              <div className="text-left">
-                <h4 className="font-display font-bold text-xl text-foreground mb-2">Architectural Design</h4>
-                <p className="text-muted text-base font-body leading-relaxed">
-                  Designing robust system architectures and intuitive, tactile user interfaces.
-                </p>
-              </div>
-            </Card>
-
-            <Card className="flex items-start gap-6 p-8 shadow-neu-extruded transition-transform duration-300 hover:scale-[1.02]" hover={true}>
-              <div className="shrink-0 p-4 rounded-2xl shadow-neu-inset-deep bg-[#E0E5EC]">
-                <Briefcase className="h-6 w-6 text-accent" strokeWidth={2} />
-              </div>
-              <div className="text-left">
-                <h4 className="font-display font-bold text-xl text-foreground mb-2">Project Management</h4>
-                <p className="text-muted text-base font-body leading-relaxed">
-                  Leading projects from conception to completion with agile methodologies.
-                </p>
-              </div>
-            </Card>
+    <section id="about" className="bg-page px-4 md:px-6 py-24">
+      <div className="max-w-[88rem] mx-auto">
+        {/* Header row */}
+        <motion.div {...viewAnim} className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 items-start">
+          {/* Left */}
+          <div>
+            <h2
+              className="text-foreground text-4xl md:text-5xl font-medium leading-tight mb-8"
+              style={{ letterSpacing: "-0.03em" }}
+            >
+              Meet Abhishek.
+            </h2>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-3 bg-foreground text-white text-base font-medium pl-8 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200 pill-glow"
+            >
+              Get in Touch
+              <span className="bg-white rounded-full p-2 flex items-center justify-center">
+                <ArrowRight className="w-4 h-4 text-foreground" />
+              </span>
+            </a>
           </div>
+          {/* Right */}
+          <p
+            className="text-foreground/60 text-xl md:text-2xl leading-relaxed"
+          >
+            I am a dedicated full stack software engineer with a deep passion for architecting scalable systems and building intuitive digital products. With a strong foundation in both frontend and backend technologies, I specialize in creating seamless, end-to-end solutions.
+          </p>
+        </motion.div>
+
+        {/* Cards grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Large card with image */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+            viewport={{ once: true, margin: "-80px" }}
+            className="sm:col-span-2 rounded-2xl overflow-hidden relative min-h-80"
+            style={{
+              backgroundImage: `url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&auto=format&fit=crop')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            {/* Soft overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+            <div className="relative z-10 p-7 min-h-80 flex flex-col justify-between">
+              <h3
+                className="text-white text-2xl font-medium leading-snug"
+                style={{ letterSpacing: "-0.02em" }}
+              >
+                Code that scales
+              </h3>
+              <p className="text-white/70 text-base max-w-xs">
+                I thrive at the intersection of architecture and design, pushing the boundaries of modern web technologies.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Dark cards */}
+          {specialties.filter(s => s.dark).map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: (index + 1) * 0.1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              className="rounded-2xl p-7 min-h-80 flex flex-col justify-between"
+              style={{ backgroundColor: "#2B2644" }}
+            >
+              <h3
+                className="text-white text-2xl font-medium leading-snug whitespace-pre-line"
+                style={{ letterSpacing: "-0.02em" }}
+              >
+                {item.title}
+              </h3>
+              <p className="text-white/60 text-base">{item.description}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

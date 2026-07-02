@@ -1,19 +1,13 @@
 import * as React from "react"
-import { clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { cn } from "@/lib/utils"
 
-export function cn(...inputs) {
-  return twMerge(clsx(inputs))
-}
-
-const Card = React.forwardRef(({ className, inset = false, hover = false, children, ...props }, ref) => {
+const Card = React.forwardRef(({ className, hover = false, children, ...props }, ref) => {
   return (
     <div
       ref={ref}
       className={cn(
-        "relative rounded-[32px] bg-[#E0E5EC] transition-all duration-300 ease-out overflow-hidden p-6 sm:p-8",
-        inset ? "shadow-neu-inset" : "shadow-neu-extruded",
-        hover && "hover:-translate-y-1 hover:shadow-neu-extruded-hover",
+        "relative rounded-xl bg-card backdrop-blur-[8px] border border-border transition-all duration-300 ease-out overflow-hidden p-6 sm:p-8",
+        hover && "hover:border-border-hover hover:bg-[rgba(26,26,36,0.8)] hover:scale-[1.02] hover:shadow-lg",
         className
       )}
       {...props}
