@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Code, User, Briefcase } from "lucide-react";
+import { ArrowRight, Code, User, Briefcase, Download } from "lucide-react";
 
 const specialties = [
   {
@@ -43,15 +43,30 @@ export const AboutSection = () => {
             >
               Meet Abhishek.
             </h2>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-3 bg-foreground text-white text-base font-medium pl-8 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200 pill-glow"
-            >
-              Get in Touch
-              <span className="bg-white rounded-full p-2 flex items-center justify-center">
-                <ArrowRight className="w-4 h-4 text-foreground" />
-              </span>
-            </a>
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-3 bg-foreground text-white text-base font-medium pl-8 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200 pill-glow"
+              >
+                Get in Touch
+                <span className="bg-white rounded-full p-2 flex items-center justify-center">
+                  <ArrowRight className="w-4 h-4 text-foreground" />
+                </span>
+              </a>
+
+              <a
+                href="/resume.pdf"
+                download="Abhishek_Kumar_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-card border border-border hover:border-foreground/20 text-foreground text-base font-medium pl-7 pr-2 py-2 rounded-full hover:bg-card/80 transition-all duration-200 shadow-card"
+              >
+                Download CV
+                <span className="bg-page rounded-full p-2 flex items-center justify-center text-foreground">
+                  <Download className="w-4 h-4" />
+                </span>
+              </a>
+            </div>
           </div>
           {/* Right */}
           <p

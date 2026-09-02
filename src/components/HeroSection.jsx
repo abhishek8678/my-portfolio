@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import gsap from "gsap";
 
 const roles = ["Fullstack Dev", "Problem Solver", "Tech Enthusiast", "Builder"];
@@ -80,15 +80,30 @@ export const HeroSection = () => {
             </p>
 
             {/* CTA */}
-            <a
-              href="#projects"
-              className="hero-fade inline-flex items-center gap-3 bg-foreground text-white text-base md:text-lg font-medium pl-8 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200 pill-glow"
-            >
-              View Projects
-              <span className="bg-white rounded-full p-2 flex items-center justify-center">
-                <ArrowRight className="w-5 h-5 text-foreground" />
-              </span>
-            </a>
+            <div className="hero-fade flex flex-wrap items-center gap-3 md:gap-4">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-3 bg-foreground text-white text-base md:text-lg font-medium pl-8 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200 pill-glow"
+              >
+                View Projects
+                <span className="bg-white rounded-full p-2 flex items-center justify-center">
+                  <ArrowRight className="w-5 h-5 text-foreground" />
+                </span>
+              </a>
+
+              <a
+                href="/resume.pdf"
+                download="Abhishek_Kumar_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-white/90 hover:bg-white text-foreground text-base md:text-lg font-medium pl-6 pr-2 py-2 rounded-full border border-black/10 backdrop-blur-md hover:shadow-card transition-all duration-200"
+              >
+                Download CV
+                <span className="bg-foreground text-white rounded-full p-2 flex items-center justify-center">
+                  <Download className="w-5 h-5" />
+                </span>
+              </a>
+            </div>
 
             {/* Brand marquee */}
             <div className="hero-fade mt-16 md:mt-24 w-full max-w-md overflow-hidden">

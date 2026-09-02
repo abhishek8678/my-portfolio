@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
+import { Menu, X, FileDown } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const navItems = [
@@ -10,11 +10,7 @@ const navItems = [
   { name: "Contact", href: "#contact" },
 ];
 
-const LogoMark = ({ className }) => (
-  <svg viewBox="0 0 256 256" fill="currentColor" className={className}>
-    <path d="M128.005 191.173C128.448 156.208 156.93 128 192 128V64H128C128 99.346 99.346 128 64 128V192H128ZM192 256H64C28.654 256 0 227.346 0 192V64H64V0H192C227.346 0 256 28.654 256 64V192H192Z" />
-  </svg>
-);
+import { LogoMark } from "./LogoMark";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,7 +43,7 @@ export const Navbar = () => {
       <div className="max-w-[88rem] mx-auto flex items-center justify-between">
         {/* Logo */}
         <a href="#hero" className="flex items-center gap-2.5 group">
-          <LogoMark className="w-7 h-7 text-foreground" />
+          <LogoMark className="w-7 h-7 text-foreground transition-transform duration-300 group-hover:scale-105" />
           <span
             className="text-2xl font-medium tracking-tight text-foreground"
           >
@@ -73,8 +69,18 @@ export const Navbar = () => {
           ))}
         </div>
 
-        {/* Right — CTA */}
-        <div className="hidden md:block">
+        {/* Right — CTA & Resume */}
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href="/resume.pdf"
+            download="Abhishek_Kumar_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground/80 hover:text-foreground text-sm font-medium px-4 py-2 rounded-full border border-border hover:border-foreground/20 hover:bg-black/5 transition-all flex items-center gap-2"
+          >
+            <FileDown className="w-4 h-4" />
+            Resume
+          </a>
           <a
             href="#contact"
             className="bg-foreground text-white text-base font-medium px-7 py-2.5 rounded-full hover:bg-gray-800 transition-colors duration-200 pill-glow"
@@ -118,8 +124,19 @@ export const Navbar = () => {
           </a>
         ))}
         <a
+          href="/resume.pdf"
+          download="Abhishek_Kumar_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-2 border border-border text-foreground text-center text-base font-medium py-3 rounded-full hover:bg-page transition-colors flex items-center justify-center gap-2"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          <FileDown className="w-4 h-4" />
+          Download Resume
+        </a>
+        <a
           href="#contact"
-          className="mt-3 bg-foreground text-white text-center text-base font-medium py-3 rounded-full hover:bg-gray-800 transition-colors"
+          className="mt-2 bg-foreground text-white text-center text-base font-medium py-3 rounded-full hover:bg-gray-800 transition-colors"
           onClick={() => setIsMenuOpen(false)}
         >
           Let's Talk

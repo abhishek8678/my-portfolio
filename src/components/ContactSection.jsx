@@ -7,10 +7,12 @@ import {
   Twitter,
   Github,
   ArrowRight,
+  FileDown,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { LogoMark } from "./LogoMark";
 
 const viewAnim = {
   initial: { opacity: 0, y: 30 },
@@ -40,6 +42,14 @@ const contactInfo = [
     value: "Jaipur, Rajasthan, India",
     href: null,
     isLink: false,
+  },
+  {
+    icon: FileDown,
+    title: "Resume / CV",
+    value: "Download PDF",
+    href: "/resume.pdf",
+    download: "Abhishek_Kumar_Resume.pdf",
+    isLink: true,
   },
 ];
 
@@ -124,7 +134,10 @@ export const ContactSection = () => {
                   {item.isLink ? (
                     <a
                       href={item.href}
-                      className="text-muted text-sm hover:text-foreground transition-colors truncate block"
+                      download={item.download || undefined}
+                      target={item.href.startsWith("http") || item.download ? "_blank" : undefined}
+                      rel={item.href.startsWith("http") || item.download ? "noopener noreferrer" : undefined}
+                      className="text-muted text-sm hover:text-foreground transition-colors truncate block font-medium"
                     >
                       {item.value}
                     </a>
@@ -274,9 +287,3 @@ export const ContactSection = () => {
     </section>
   );
 };
-
-const LogoMark = ({ className }) => (
-  <svg viewBox="0 0 256 256" fill="currentColor" className={className}>
-    <path d="M128.005 191.173C128.448 156.208 156.93 128 192 128V64H128C128 99.346 99.346 128 64 128V192H128ZM192 256H64C28.654 256 0 227.346 0 192V64H64V0H192C227.346 0 256 28.654 256 64V192H192Z" />
-  </svg>
-);
