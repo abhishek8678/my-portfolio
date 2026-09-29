@@ -11,12 +11,19 @@ export const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div className="flex flex-col bg-page min-h-screen">
+    <div className="flex flex-col bg-page min-h-screen relative text-foreground transition-colors duration-300 overflow-x-hidden">
+      {/* Dark mode radiant ambient light-blue and purple glow mesh */}
+      <div className="ambient-gradient-mesh">
+        <div className="ambient-glow-purple" />
+        <div className="ambient-glow-blue" />
+        <div className="ambient-glow-bottom" />
+      </div>
+
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
 
       <Navbar />
 
-      <main>
+      <main className="relative z-10">
         <HeroSection />
         <AboutSection />
         <SkillsSection />

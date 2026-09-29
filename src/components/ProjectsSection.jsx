@@ -90,18 +90,18 @@ export const ProjectsSection = () => {
           <div className="flex md:justify-end md:items-start">
             <button
               onClick={() => window.open("https://github.com/abhishek8678", "_blank")}
-              className="inline-flex items-center gap-3 bg-foreground text-white text-base font-medium pl-8 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200 pill-glow cursor-pointer"
+              className="inline-flex items-center gap-3 bg-foreground text-page text-base font-medium pl-8 pr-2 py-2 rounded-full hover:opacity-90 transition-all duration-200 pill-glow shadow-md cursor-pointer"
             >
               View all work
-              <span className="bg-white rounded-full p-2 flex items-center justify-center">
-                <ArrowRight className="w-4 h-4 text-foreground" />
+              <span className="bg-page rounded-full p-2 flex items-center justify-center text-foreground">
+                <ArrowRight className="w-4 h-4" />
               </span>
             </button>
           </div>
         </motion.div>
 
         {/* Project cards */}
-        <div className="space-y-4">
+        <div className="space-y-5">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -113,7 +113,7 @@ export const ProjectsSection = () => {
                 delay: index * 0.1,
               }}
               viewport={{ once: true, margin: "-80px" }}
-              className="group relative rounded-2xl overflow-hidden cursor-pointer"
+              className="group relative rounded-2xl overflow-hidden cursor-pointer border border-border dark:border-white/10 dark:hover:border-purple-500/50 dark:hover:shadow-[0_0_35px_rgba(139,92,246,0.25)] transition-all duration-500"
             >
               {/* Background */}
               <div className="relative aspect-[21/9] md:aspect-[3/1]">
@@ -124,8 +124,8 @@ export const ProjectsSection = () => {
                 />
 
                 {/* Gradient overlays */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent group-hover:from-black/70 transition-colors duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
                 {/* Content overlay */}
                 <div className="relative z-10 h-full flex flex-col justify-between p-8 md:p-10">
@@ -134,7 +134,7 @@ export const ProjectsSection = () => {
                     {project.tags.map((tag, idx) => (
                       <span
                         key={idx}
-                        className="text-[11px] uppercase tracking-wider text-white/80 bg-white/15 backdrop-blur-sm rounded-full px-3 py-1 font-medium"
+                        className="text-[11px] uppercase tracking-wider text-white/90 bg-white/15 dark:bg-purple-950/50 dark:border dark:border-purple-400/30 backdrop-blur-sm rounded-full px-3 py-1 font-medium shadow-sm"
                       >
                         {tag}
                       </span>
@@ -150,7 +150,7 @@ export const ProjectsSection = () => {
                       >
                         {project.title}
                       </h3>
-                      <p className="text-white/60 text-sm md:text-base max-w-md leading-relaxed hidden md:block">
+                      <p className="text-white/70 text-sm md:text-base max-w-md leading-relaxed hidden md:block">
                         {project.description}
                       </p>
                     </div>
@@ -161,7 +161,7 @@ export const ProjectsSection = () => {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+                        className="w-10 h-10 rounded-full bg-white/15 dark:bg-black/50 dark:border dark:border-white/15 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/30 dark:hover:bg-purple-600/40 dark:hover:border-purple-400/50 transition-all duration-200"
                         aria-label="GitHub"
                       >
                         <Github size={18} strokeWidth={1.5} />
@@ -170,7 +170,7 @@ export const ProjectsSection = () => {
                         href={project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+                        className="w-10 h-10 rounded-full bg-white/15 dark:bg-black/50 dark:border dark:border-white/15 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/30 dark:hover:bg-purple-600/40 dark:hover:border-purple-400/50 transition-all duration-200"
                         aria-label="Live Demo"
                       >
                         <ExternalLink size={18} strokeWidth={1.5} />

@@ -48,9 +48,13 @@ export const HeroSection = () => {
             src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260423_161253_c72b1869-400f-45ed-ac0c-52f68c2ed5bd.mp4"
           />
 
-          {/* Soft overlay for readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent" />
+          {/* Soft overlay for readability in light and dark mode */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/50 to-transparent dark:from-[#0A0915]/95 dark:via-[#0A0915]/75 dark:to-black/30 transition-colors duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent dark:from-[#0A0915]/85 dark:to-transparent transition-colors duration-300" />
+
+          {/* Glowing gradient aura in dark mode */}
+          <div className="hidden dark:block absolute top-10 left-10 w-80 h-80 bg-purple-600/25 rounded-full blur-[90px] pointer-events-none" />
+          <div className="hidden dark:block absolute bottom-10 right-20 w-80 h-80 bg-sky-500/20 rounded-full blur-[90px] pointer-events-none" />
 
           {/* Content */}
           <div className="relative z-10 flex flex-col items-start justify-start h-full p-8 md:p-12 pt-28 md:pt-36">
@@ -60,15 +64,17 @@ export const HeroSection = () => {
             >
               Building
               <br />
-              Digital Craft
+              <span className="dark:bg-gradient-to-r dark:from-white dark:via-purple-200 dark:to-sky-300 dark:bg-clip-text dark:text-transparent">
+                Digital Craft
+              </span>
             </h1>
 
-            <p className="hero-fade text-foreground/60 text-base md:text-lg max-w-md mb-3 leading-relaxed">
+            <p className="hero-fade text-muted text-base md:text-lg max-w-md mb-3 leading-relaxed">
               I'm <span className="text-foreground font-medium">Abhishek Kumar</span>, a full stack software engineer specializing in high-performance web applications with scalable architecture.
             </p>
 
             {/* Role cycling */}
-            <p className="hero-fade text-foreground/50 text-sm md:text-base mb-8">
+            <p className="hero-fade text-muted-light text-sm md:text-base mb-8">
               Currently a{" "}
               <span
                 key={roleIndex}
@@ -83,11 +89,11 @@ export const HeroSection = () => {
             <div className="hero-fade flex flex-wrap items-center gap-3 md:gap-4">
               <a
                 href="#projects"
-                className="inline-flex items-center gap-3 bg-foreground text-white text-base md:text-lg font-medium pl-8 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200 pill-glow"
+                className="inline-flex items-center gap-3 bg-foreground text-page text-base md:text-lg font-medium pl-8 pr-2 py-2 rounded-full hover:opacity-90 transition-all duration-200 pill-glow shadow-md cursor-pointer"
               >
                 View Projects
-                <span className="bg-white rounded-full p-2 flex items-center justify-center">
-                  <ArrowRight className="w-5 h-5 text-foreground" />
+                <span className="bg-page rounded-full p-2 flex items-center justify-center text-foreground">
+                  <ArrowRight className="w-5 h-5" />
                 </span>
               </a>
 
@@ -96,10 +102,10 @@ export const HeroSection = () => {
                 download="Abhishek_Kumar_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-white/90 hover:bg-white text-foreground text-base md:text-lg font-medium pl-6 pr-2 py-2 rounded-full border border-black/10 backdrop-blur-md hover:shadow-card transition-all duration-200"
+                className="inline-flex items-center gap-3 bg-white/80 dark:bg-card/70 hover:bg-white dark:hover:bg-card text-foreground text-base md:text-lg font-medium pl-6 pr-2 py-2 rounded-full border border-border hover:border-purple-500/40 backdrop-blur-md hover:shadow-card dark:hover:shadow-[0_0_20px_rgba(168,85,247,0.25)] transition-all duration-200 cursor-pointer"
               >
                 Download CV
-                <span className="bg-foreground text-white rounded-full p-2 flex items-center justify-center">
+                <span className="bg-foreground text-page rounded-full p-2 flex items-center justify-center">
                   <Download className="w-5 h-5" />
                 </span>
               </a>

@@ -97,11 +97,11 @@ export const ContactSection = () => {
           <div className="flex md:justify-end md:items-start">
             <a
               href="mailto:abhishekstark1707@gmail.com"
-              className="inline-flex items-center gap-3 bg-foreground text-white text-base font-medium pl-8 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200 pill-glow"
+              className="inline-flex items-center gap-3 bg-foreground text-page text-base font-medium pl-8 pr-2 py-2 rounded-full hover:opacity-90 transition-all duration-200 pill-glow shadow-md cursor-pointer"
             >
               Email me
-              <span className="bg-white rounded-full p-2 flex items-center justify-center">
-                <ArrowRight className="w-4 h-4 text-foreground" />
+              <span className="bg-page rounded-full p-2 flex items-center justify-center text-foreground">
+                <ArrowRight className="w-4 h-4" />
               </span>
             </a>
           </div>
@@ -122,7 +122,7 @@ export const ContactSection = () => {
                   delay: index * 0.08,
                 }}
                 viewport={{ once: true, margin: "-80px" }}
-                className="bg-card border border-border rounded-2xl p-5 flex items-center gap-5 group hover:shadow-card-hover hover:border-border-hover transition-all duration-300"
+                className="bg-card border border-border rounded-2xl p-5 flex items-center gap-5 group hover:shadow-card-hover hover:border-purple-500/40 dark:hover:shadow-[0_0_20px_rgba(139,92,246,0.15)] transition-all duration-300"
               >
                 <div className="bg-page rounded-xl p-3 flex-shrink-0">
                   <item.icon size={20} className="text-foreground" strokeWidth={1.5} />
@@ -160,7 +160,7 @@ export const ContactSection = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-xl bg-card border border-border text-muted hover:text-foreground hover:shadow-card-hover hover:border-border-hover transition-all duration-300"
+                    className="p-3 rounded-xl bg-card border border-border text-muted hover:text-foreground hover:shadow-card-hover hover:border-purple-500/40 dark:hover:shadow-[0_0_15px_rgba(139,92,246,0.2)] transition-all duration-300"
                     aria-label={social.label}
                   >
                     <social.icon size={20} strokeWidth={1.5} />
@@ -176,7 +176,7 @@ export const ContactSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             viewport={{ once: true, margin: "-80px" }}
-            className="lg:col-span-3 bg-card border border-border rounded-2xl p-8 md:p-10 shadow-card"
+            className="lg:col-span-3 bg-card border border-border rounded-2xl p-8 md:p-10 shadow-card dark:border-white/10 dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
           >
             <h3
               className="text-2xl font-medium mb-8 text-foreground"
@@ -199,7 +199,7 @@ export const ContactSection = () => {
                     name="name"
                     required
                     placeholder="John Doe"
-                    className="w-full rounded-xl bg-page border border-border px-4 py-3 text-foreground text-sm placeholder:text-muted-light focus:outline-none focus:border-foreground/30 focus:ring-1 focus:ring-foreground/10 transition-all"
+                    className="w-full rounded-xl bg-page border border-border px-4 py-3 text-foreground text-sm placeholder:text-muted-light focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/20 transition-all"
                   />
                 </div>
                 <div className="space-y-2 text-left">
@@ -215,7 +215,7 @@ export const ContactSection = () => {
                     name="email"
                     required
                     placeholder="john@example.com"
-                    className="w-full rounded-xl bg-page border border-border px-4 py-3 text-foreground text-sm placeholder:text-muted-light focus:outline-none focus:border-foreground/30 focus:ring-1 focus:ring-foreground/10 transition-all"
+                    className="w-full rounded-xl bg-page border border-border px-4 py-3 text-foreground text-sm placeholder:text-muted-light focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/20 transition-all"
                   />
                 </div>
               </div>
@@ -232,7 +232,7 @@ export const ContactSection = () => {
                   name="message"
                   required
                   placeholder="How can I help you?"
-                  className="w-full min-h-[140px] rounded-xl bg-page border border-border px-4 py-3 text-foreground text-sm placeholder:text-muted-light focus:outline-none focus:border-foreground/30 focus:ring-1 focus:ring-foreground/10 transition-all resize-y"
+                  className="w-full min-h-[140px] rounded-xl bg-page border border-border px-4 py-3 text-foreground text-sm placeholder:text-muted-light focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/20 transition-all resize-y"
                 />
               </div>
 
@@ -240,7 +240,7 @@ export const ContactSection = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-foreground text-white rounded-full px-8 py-3.5 text-sm font-medium hover:bg-gray-800 transition-all duration-200 disabled:opacity-50 cursor-pointer pill-glow"
+                  className="bg-foreground text-page rounded-full px-8 py-3.5 text-sm font-medium hover:opacity-90 transition-all duration-200 disabled:opacity-50 cursor-pointer pill-glow shadow-md"
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </button>

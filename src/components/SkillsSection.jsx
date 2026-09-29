@@ -93,8 +93,8 @@ export const SkillsSection = () => {
               className={cn(
                 "rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-200 capitalize cursor-pointer",
                 activeCategory === category
-                  ? "bg-foreground text-white shadow-pill"
-                  : "text-muted hover:text-foreground bg-card border border-border hover:border-border-hover"
+                  ? "bg-foreground text-page shadow-pill dark:shadow-[0_0_20px_rgba(168,85,247,0.35)]"
+                  : "text-muted hover:text-foreground bg-card border border-border hover:border-purple-500/40"
               )}
             >
               {category}
@@ -115,7 +115,7 @@ export const SkillsSection = () => {
                 delay: index * 0.04,
               }}
               viewport={{ once: true, margin: "-50px" }}
-              className="bg-card border border-border rounded-2xl p-5 group hover:shadow-card-hover hover:border-border-hover transition-all duration-300"
+              className="bg-card border border-border rounded-2xl p-5 group hover:shadow-card-hover hover:border-purple-500/40 dark:hover:shadow-[0_0_25px_rgba(139,92,246,0.15)] transition-all duration-300"
             >
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-sm font-medium text-foreground">
@@ -128,9 +128,9 @@ export const SkillsSection = () => {
                   {skill.level}%
                 </span>
               </div>
-              <div className="h-1.5 bg-page rounded-full overflow-hidden">
+              <div className="h-1.5 bg-page dark:bg-black/40 rounded-full overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-foreground transition-all duration-1000"
+                  className="h-full rounded-full bg-foreground dark:bg-gradient-to-r dark:from-sky-400 dark:via-purple-400 dark:to-purple-500 transition-all duration-1000"
                   style={{ width: `${skill.level}%` }}
                 />
               </div>

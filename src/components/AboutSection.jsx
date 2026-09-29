@@ -46,11 +46,11 @@ export const AboutSection = () => {
             <div className="flex flex-wrap items-center gap-4">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-3 bg-foreground text-white text-base font-medium pl-8 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200 pill-glow"
+                className="inline-flex items-center gap-3 bg-foreground text-page text-base font-medium pl-8 pr-2 py-2 rounded-full hover:opacity-90 transition-all duration-200 pill-glow shadow-md cursor-pointer"
               >
                 Get in Touch
-                <span className="bg-white rounded-full p-2 flex items-center justify-center">
-                  <ArrowRight className="w-4 h-4 text-foreground" />
+                <span className="bg-page rounded-full p-2 flex items-center justify-center text-foreground">
+                  <ArrowRight className="w-4 h-4" />
                 </span>
               </a>
 
@@ -59,7 +59,7 @@ export const AboutSection = () => {
                 download="Abhishek_Kumar_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-card border border-border hover:border-foreground/20 text-foreground text-base font-medium pl-7 pr-2 py-2 rounded-full hover:bg-card/80 transition-all duration-200 shadow-card"
+                className="inline-flex items-center gap-3 bg-card border border-border hover:border-purple-500/40 text-foreground text-base font-medium pl-7 pr-2 py-2 rounded-full hover:bg-card/80 transition-all duration-200 shadow-card dark:hover:shadow-[0_0_20px_rgba(168,85,247,0.25)] cursor-pointer"
               >
                 Download CV
                 <span className="bg-page rounded-full p-2 flex items-center justify-center text-foreground">
@@ -70,7 +70,7 @@ export const AboutSection = () => {
           </div>
           {/* Right */}
           <p
-            className="text-foreground/60 text-xl md:text-2xl leading-relaxed"
+            className="text-muted text-xl md:text-2xl leading-relaxed"
           >
             I am a dedicated full stack software engineer with a deep passion for architecting scalable systems and building intuitive digital products. With a strong foundation in both frontend and backend technologies, I specialize in creating seamless, end-to-end solutions.
           </p>
@@ -84,7 +84,7 @@ export const AboutSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
             viewport={{ once: true, margin: "-80px" }}
-            className="sm:col-span-2 rounded-2xl overflow-hidden relative min-h-80"
+            className="sm:col-span-2 rounded-2xl overflow-hidden relative min-h-80 border border-border hover:border-purple-500/30 transition-all duration-300 group"
             style={{
               backgroundImage: `url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&auto=format&fit=crop')`,
               backgroundSize: "cover",
@@ -92,7 +92,7 @@ export const AboutSection = () => {
             }}
           >
             {/* Soft overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/70 transition-colors duration-300" />
             <div className="relative z-10 p-7 min-h-80 flex flex-col justify-between">
               <h3
                 className="text-white text-2xl font-medium leading-snug"
@@ -100,13 +100,13 @@ export const AboutSection = () => {
               >
                 Code that scales
               </h3>
-              <p className="text-white/70 text-base max-w-xs">
+              <p className="text-white/80 text-base max-w-xs leading-relaxed">
                 I thrive at the intersection of architecture and design, pushing the boundaries of modern web technologies.
               </p>
             </div>
           </motion.div>
 
-          {/* Dark cards */}
+          {/* Dark / specialty cards */}
           {specialties.filter(s => s.dark).map((item, index) => (
             <motion.div
               key={index}
@@ -114,8 +114,7 @@ export const AboutSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: (index + 1) * 0.1 }}
               viewport={{ once: true, margin: "-80px" }}
-              className="rounded-2xl p-7 min-h-80 flex flex-col justify-between"
-              style={{ backgroundColor: "#2B2644" }}
+              className="rounded-2xl p-7 min-h-80 flex flex-col justify-between bg-[#2B2644] dark:bg-[#15132B] border border-border dark:border-purple-500/15 hover:border-purple-500/40 dark:hover:shadow-[0_0_25px_rgba(139,92,246,0.18)] transition-all duration-300"
             >
               <h3
                 className="text-white text-2xl font-medium leading-snug whitespace-pre-line"
@@ -123,7 +122,7 @@ export const AboutSection = () => {
               >
                 {item.title}
               </h3>
-              <p className="text-white/60 text-base">{item.description}</p>
+              <p className="text-white/70 text-base leading-relaxed">{item.description}</p>
             </motion.div>
           ))}
         </div>
