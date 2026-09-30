@@ -3,6 +3,17 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
+    id: 6,
+    title: "Food Frenzy — Full-Stack Dining Platform",
+    description:
+      "Enterprise dining & ordering platform built with Spring Boot 3.4 & Java 21. Features dual-theme engine (dark/light), Google OAuth 2.0 security, dynamic cart settlement, and Swagger OpenAPI docs.",
+    image:
+      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop",
+    tags: ["Spring Boot", "Java 21", "PostgreSQL", "OAuth 2.0"],
+    demoUrl: "https://github.com/abhishek8678/Food-Frenzy#readme",
+    githubUrl: "https://github.com/abhishek8678/Food-Frenzy",
+  },
+  {
     id: 5,
     title: "RecruitAI — AI Recruitment Screener",
     description:

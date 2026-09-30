@@ -6,6 +6,7 @@ const roles = ["Fullstack Dev", "Problem Solver", "Tech Enthusiast", "Builder"];
 
 const brands = [
   { name: "React", style: { fontFamily: "Georgia, serif", fontWeight: 700, letterSpacing: "-0.02em", fontSize: "15px" } },
+  { name: "Spring Boot", style: { fontFamily: "Palatino, 'Book Antiqua', serif", fontWeight: 700, letterSpacing: "-0.01em", fontSize: "15px" } },
   { name: "Node.js", style: { fontFamily: "Arial, sans-serif", fontWeight: 900, letterSpacing: "0.08em", fontSize: "13px", textTransform: "uppercase" } },
   { name: "TypeScript", style: { fontFamily: "'Trebuchet MS', sans-serif", fontWeight: 600, letterSpacing: "0.01em", fontSize: "15px", fontStyle: "italic" } },
   { name: "MongoDB", style: { fontFamily: "'Courier New', monospace", fontWeight: 700, letterSpacing: "0.12em", fontSize: "13px", textTransform: "uppercase" } },

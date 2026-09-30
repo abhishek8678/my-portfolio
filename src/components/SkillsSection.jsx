@@ -11,6 +11,8 @@ const skills = [
   { name: "Next.js", level: 50, category: "frontend" },
   { name: "Node.js", level: 70, category: "backend" },
   { name: "Express", level: 75, category: "backend" },
+  { name: "Java", level: 75, category: "backend" },
+  { name: "Spring Boot", level: 75, category: "backend" },
   { name: "MongoDB", level: 70, category: "backend" },
   { name: "PostgreSQL", level: 65, category: "backend" },
   { name: "GraphQL", level: 40, category: "backend" },
@@ -26,6 +28,7 @@ const categories = ["all", "frontend", "backend", "tools"];
 const skillMarqueeItems = [
   { name: "React", style: { fontFamily: "Georgia, serif", fontWeight: 700, letterSpacing: "-0.02em", fontSize: "16px" } },
   { name: "TypeScript", style: { fontFamily: "Arial, sans-serif", fontWeight: 900, letterSpacing: "0.06em", fontSize: "13px", textTransform: "uppercase" } },
+  { name: "Spring Boot", style: { fontFamily: "Palatino, serif", fontWeight: 700, letterSpacing: "-0.01em", fontSize: "16px" } },
   { name: "Node.js", style: { fontFamily: "'Trebuchet MS', sans-serif", fontWeight: 600, letterSpacing: "0.01em", fontSize: "16px", fontStyle: "italic" } },
   { name: "PostgreSQL", style: { fontFamily: "'Courier New', monospace", fontWeight: 700, letterSpacing: "0.1em", fontSize: "13px", textTransform: "uppercase" } },
   { name: "Next.js", style: { fontFamily: "Palatino, serif", fontWeight: 400, letterSpacing: "-0.01em", fontSize: "17px" } },
